@@ -1,0 +1,72 @@
+A. Hero Section (above the fold)
+H1: “Ship Production Apps from Plain English”
+Sub: “FlowOps turns sentences into Git repos, Docker images and Terraform plans in < 30 min”
+CTA-1: “Live Demo →” (scrolls to 60-sec docker-compose block)
+CTA-2: “Book White-Label Tour” (Calendly pop-up)
+Visual: looping 15-sec screen-cast (terminal → terraform apply → browser opens)
+B. How It Works (3-step infographic)
+Type – natural-language spec in web form
+Generate – LLM planner → DAG → code-gen agents → lock-files
+Deploy – terraform apply → VPC, RDS, EKS, CDN, WAF, TLS 1.3
+Each step has a 5-second Lottie animation.
+C. Tech Stack Deep-Dive (accordion or tabs)
+Table
+Copy
+Layer	Tool	Why We Picked It	Enterprise Proof
+Planner	LangChain + DAG scheduler	Deterministic task graph, retry, budget cap	SOC-2 evidence included
+Front-End	React 18 + Vite + MUI	3-line embed, tree-shake, a11y	WCAG 2.1 report
+API	Node 20 + Socket.io	Real-time chat, webhook fan-out	10 k concurrent tested
+AI	Python + FastAPI + LangChain	Model-agnostic, memory, CRM hooks	HIPAA encryption at rest
+Infra	Terraform + Helm	Cloud-agnostic, drift detect, rollback	CIS benchmark scored
+Security	Snyk + Trivy + OPA	CVE-free SBOM, policy-as-code	PDF auditor pack
+D. Security & Compliance Block
+Badges: SOC-2 Type II, HIPAA, GDPR, CIS, TLS 1.3, AES-256
+Copy: “Every artifact is scanned, signed, and attested before deploy”
+Link: “Download latest SBOM →” (drops umenbot-sbom.json)
+E. Customer Portal Preview (screenshots)
+Embed-code generator (3-line copy)
+Lead-dashboard (real-time CSV export)
+Analytics (Metabase funnel)
+Billing (Stripe portal)
+Use blurred screenshots + “Book demo to un-blur”
+F. Pricing Section (3 cards)
+Table
+Copy
+Starter	Growth	Enterprise
+$99/mo	$499/mo	$2k+/mo
+1 k chats	10 k chats	Unlimited
+Email support	Slack alerts	SLA + on-prem
+CTA: “Start Free”	CTA: “Book Demo”	CTA: “Contact Sales”
+G. ROI Calculator (interactive)
+Inputs:
+Current support tickets / month
+Avg. response time (hours)
+Agent cost / hour
+Output:
+Cost saved / month
+Leads gained / month
+Pay-back period (days)
+H. Testimonials (carousel)
+“Cut support cost 70 %, conversion up 35 %, pay-back < 45 days.” – AcmeCorp CTO
+I. FAQ (accordion)
+“Is my data encrypted?” → AES-256 at rest, TLS 1.3 in transit
+“Can I self-host?” → Yes, Terraform plan included
+“Which clouds?” → AWS, Azure, GCP – pick one
+“Lock-in?” → MIT licence, export anytime
+J. Footer
+Product: Docs, Changelog, Road-map
+Company: About, Careers, Contact
+Legal: Privacy, Terms, Security
+Social: GitHub, Twitter, LinkedIn, YouTube
+Copyright: © 2024 FlowOps – All rights reserved
+K. SEO Meta (inject in <head>)
+HTML
+Preview
+Copy
+<title>FlowOps – Ship Production Apps from Plain English</title>
+<meta name="description" content="Turn sentences into Git repos, Docker images and Terraform plans in < 30 min. White-label SaaS with SOC-2, GDPR, HIPAA.">
+<meta name="keywords" content="natural language to code, terraform automation, white-label SaaS, SOC-2, HIPAA, GDPR">
+L. Tracking Pixels (optional)
+Google Analytics 4
+LinkedIn Insight
+Calendly pop-up script
