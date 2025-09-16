@@ -315,8 +315,9 @@
     "zod-validation-error": "^3.4.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "tsx server/index.ts"
+    "dev": "tsx server/index.ts",
+    "build": "vite build && mv dist/public/* dist/ && rmdir dist/public",
+    "preview": "vite preview --port 3001 --host 0.0.0.0"
   },
   "keywords": [],
   "author": "",
