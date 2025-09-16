@@ -316,9 +316,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "tsx server/index.ts",
-    "build": "vite build",
-    "preview": "vite preview --port 3001 --host 0.0.0.0"
+    "dev": "tsx server/index.ts"
   },
   "keywords": [],
   "author": "",
