@@ -1,24 +1,13 @@
-import React, { useEffect, useRef, useState } from 'react';
-import './index.css';   // contains @tailwind base only (you already have Tailwind)
+import React, { useEffect, useState } from 'react';
+import './index.css';
 
 export default function App() {
-  const canvasRef = useRef(null);
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
 
-  // Mouse gradient (v0 style)
   useEffect(() => {
     const handle = (e) => setMouse({ x: e.clientX, y: e.clientY });
     window.addEventListener('mousemove', handle);
     return () => window.removeEventListener('mousemove', handle);
-  }, []);
-
-  // Static SVG workflow (draggable illusion)
-  useEffect(() => {
-    const svg = canvasRef.current;
-    if (!svg) return;
-    // fake drag – just moves on hover
-    svg.addEventListener('mouseenter', () => svg.style.transform = 'translate(2px, 2px)');
-    svg.addEventListener('mouseleave', () => svg.style.transform = 'translate(0, 0)');
   }, []);
 
   return (
@@ -54,7 +43,7 @@ export default function App() {
           {/* Left – Canvas (n8n-like) */}
           <div className="bg-slate-800/50 rounded-xl p-6 border border-slate-700">
             <div className="text-sm text-slate-400 mb-2">Input: “Customer portal with Stripe, Postgres, GDPR”</div>
-            <svg ref={canvasRef} className="w-full h-64 transition-transform" viewBox="0 0 400 200">
+            <svg className="w-full h-64" viewBox="0 0 400 200">
               <rect x="10" y="10" width="80" height="40" rx="6" className="fill-orange-500/20 stroke-orange-400" strokeWidth="2"/>
               <text x="50" y="35" textAnchor="middle" className="fill-slate-100 text-xs">Planner</text>
 
@@ -147,7 +136,7 @@ export default function App() {
       {/* FOOTER */}
       <footer className="relative z-10 max-w-6xl mx-auto px-6 py-10 text-center text-slate-400 text-sm">
         © 2024 FlowOps – All rights reserved.  
-        <a href="https://github.com/Ayub-shaik/flowops.coreai.co.in" className="ml-4 hover:text-orange-400">GitHub</a>
+        <a href="https://github.com/Ayub-shaik/flowops.coreai.co.in " className="ml-4 hover:text-orange-400">GitHub</a>
         <a href="mailto:info@flowops.coreai.co.in" className="ml-4 hover:text-orange-400">info@flowops.coreai.co.in</a>
       </footer>
     </div>
