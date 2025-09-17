@@ -358,6 +358,18 @@ const COST_STRATEGIES = [
 
 const MARKET_COMPARISON = [
   {
+    tool: 'FlowOps Credits',
+    offering: 'Usage-based orchestration with Plan→Patch optimisations',
+    cost: 'Pay-as-you-go (~$12–$18/mo typical)',
+    notes: 'Credits fund model mix; FlowOps Core routes cheapest safe path per step.',
+  },
+  {
+    tool: 'Anthropic (direct run)',
+    offering: 'Single premium model call (e.g., Claude) for full app build',
+    cost: '≈$20/run for stock-market app',
+    notes: 'Full repo context sent to one model; no plan/patch or routing savings.',
+  },
+  {
     tool: 'Cursor Pro',
     offering: 'Editor + agent + large context',
     cost: '~$20/mo',
@@ -1081,9 +1093,9 @@ function App() {
       </div>
 
       <div className="cost-summary">
-        Keep a lightweight seat (e.g., Supermaven $10/mo), self-host your orchestration canvas, and let FlowOps route provider calls with
-        Plan→Patch + Repo-RAG + policy classifiers. Pilot programs routinely stay within $15–$20/month in model spend while calling frontier
-        models only when they truly matter.
+        Keep a lightweight seat (e.g., Supermaven $10/mo), self-host your orchestration canvas, and purchase FlowOps credits so the platform
+        can combine Plan→Patch + Repo-RAG + routing on your behalf. FlowOps credits typically land at $12–$18 per month for complex apps,
+        compared with ~$20 for a single Anthropic run, because Central dynamically mixes models and keeps token waste down.
       </div>
     </section>
   );
