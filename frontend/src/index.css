@@ -1,1 +1,74 @@
-body { margin: 0; font-family: system-ui, sans-serif; background: #f7f7f7; color: #222; }
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
+
+:root {
+  color-scheme: dark;
+  --bg-primary: #05060f;
+  --bg-secondary: #0f172a;
+  --bg-tertiary: #1a233f;
+  --glass-bg: rgba(15, 23, 42, 0.6);
+  --glass-border: rgba(148, 163, 184, 0.25);
+  --text-primary: #f8fafc;
+  --text-secondary: rgba(226, 232, 240, 0.72);
+  --text-muted: rgba(148, 163, 184, 0.66);
+  --brand-electric: #4f9dff;
+  --brand-emerald: #34d399;
+  --brand-violet: #818cf8;
+  --brand-amber: #f8b458;
+  --accent-border: rgba(79, 157, 255, 0.35);
+  --cursor-x: 50%;
+  --cursor-y: 50%;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at var(--cursor-x) var(--cursor-y), rgba(91, 155, 255, 0.28), transparent 55%),
+    radial-gradient(circle at calc(var(--cursor-x) + 12%) calc(var(--cursor-y) + 18%), rgba(129, 140, 248, 0.22), transparent 65%),
+    linear-gradient(130deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-tertiary) 100%);
+  color: var(--text-primary);
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+  transition: background 200ms ease-out;
+  overscroll-behavior: none;
+}
+
+#root {
+  min-height: 100%;
+}
+
+::selection {
+  background: rgba(79, 157, 255, 0.3);
+  color: var(--text-primary);
+}
+
+button {
+  font-family: inherit;
+}
+
+p, ul, ol {
+  margin: 0;
+}
+
+a {
+  color: var(--brand-electric);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  body {
+    background: radial-gradient(circle at 50% 0%, rgba(79, 157, 255, 0.25), transparent 60%),
+      linear-gradient(150deg, #070912 0%, #0f182b 55%, #161f34 100%);
+  }
+}
