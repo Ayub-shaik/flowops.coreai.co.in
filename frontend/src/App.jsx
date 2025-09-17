@@ -1,5 +1,6 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import './App.css';
+import { CHART_ROWS, PRICING_PLANS } from './content/marketing';
 
 const NAV_ITEMS = [
   { label: 'Overview', key: 'overview' },
@@ -361,7 +362,7 @@ const MARKET_COMPARISON = [
     tool: 'FlowOps Credits',
     offering: 'Usage-based orchestration with Plan→Patch optimisations',
     cost: 'Pay-as-you-go (~$12–$18/mo typical)',
-    notes: 'Credits fund model mix; FlowOps Core routes cheapest safe path per step.',
+    notes: 'Credits fund model mix; FlowOps Core routes safest path per step.',
   },
   {
     tool: 'Anthropic (direct run)',
@@ -586,6 +587,41 @@ function App() {
     setMobileNavOpen(false);
   };
 
+  const trackPricingCta = useCallback((plan) => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    const payload = {
+      event: 'pricing_cta_click',
+      product: 'flowops',
+      plan: plan.name,
+      price: plan.price,
+      timestamp: Date.now(),
+    };
+
+    try {
+      if (Array.isArray(window.dataLayer)) {
+        window.dataLayer.push(payload);
+      } else if (typeof window.gtag === 'function') {
+        window.gtag('event', 'pricing_cta_click', payload);
+      } else {
+        console.debug('[analytics]', payload);
+      }
+    } catch (error) {
+      console.debug('[analytics:error]', error);
+    }
+  }, []);
+
+  const handlePricingCtaClick = (plan) => {
+    trackPricingCta(plan);
+    if (plan.price === 'Contact us') {
+      changePage('contact');
+      return;
+    }
+    changePage('live');
+  };
+
   const toggleTheme = () => {
     setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
   };
@@ -760,12 +796,13 @@ function App() {
         </p>
       </header>
       <p className="workflow-summary">
-        FlowOps Core drives the active blueprint across Plan → Patch → Validate → PR while AppGen streams a live preview and cost telemetry.
+        FlowOps Core drives the active blueprint across Plan → Patch → Validate → PR while FlowOps AppGen — the build engine — streams a live
+        preview and cost telemetry.
       </p>
       <div className="demo-layout">
         <div className="preview-panel" role="group" aria-label="FlowOps preview workspace">
           <header className="preview-header">
-            <span className="preview-title">AppGen Overview</span>
+            <span className="preview-title">FlowOps AppGen Overview</span>
             <span className="preview-status">Streaming build · 68% complete</span>
           </header>
           <div className="preview-screen">
@@ -921,7 +958,7 @@ function App() {
         <h2>FlowOps Central is the command brain coordinating every agent.</h2>
         <p>
           Central listens to planners, code agents, CI, and external tools to decide the next best action. Explore the pipeline, tooling,
-          and safeguards that keep AppGen reliable at enterprise scale.
+          and safeguards that keep FlowOps AppGen reliable at enterprise scale.
         </p>
       </header>
 
@@ -1066,6 +1103,26 @@ function App() {
         </p>
       </header>
 
+      <div className="pricing-grid">
+        {PRICING_PLANS.map((plan) => (
+          <article key={plan.name} className={`pricing-card ${plan.highlight ? 'pricing-card--highlight' : ''}`}>
+            <div className="pricing-card__header">
+              <h3>{plan.name}</h3>
+              <span className="pricing-amount">{plan.price}</span>
+              <span className="pricing-cadence">{plan.cadence}</span>
+            </div>
+            <ul>
+              {plan.bullets.map((point) => (
+                <li key={point}>{point}</li>
+              ))}
+            </ul>
+            <button type="button" className="primary pricing-cta" onClick={() => handlePricingCtaClick(plan)}>
+              {plan.price === 'Contact us' ? 'Talk to sales' : 'Start with credits'}
+            </button>
+          </article>
+        ))}
+      </div>
+
       <div className="cost-grid">
         {COST_STRATEGIES.map((item) => (
           <article key={item.title} className="cost-card">
@@ -1073,6 +1130,44 @@ function App() {
             <p>{item.detail}</p>
           </article>
         ))}
+      </div>
+
+      <div className="chart-panel">
+        <header>
+          <h3>Cost & speed against alternatives</h3>
+          <p>FlowOps credits deliver complete apps faster and with higher accuracy while staying budget friendly.</p>
+        </header>
+        <div className="chart-grid">
+          {CHART_ROWS.map((row) => (
+            <div key={row.label} className="chart-row">
+              <div className="chart-label">{row.label}</div>
+              <div className="chart-bars">
+                <div className="chart-bar">
+                  <span>Cost</span>
+                  <div className="bar-track">
+                    <div className="bar bar--flowops" style={{ width: `${row.flowOps.cost}%` }}>
+                      ${row.flowOps.cost}
+                    </div>
+                    <div className="bar bar--competitor" style={{ width: `${row.competitor.cost}%` }}>
+                      ${row.competitor.cost}
+                    </div>
+                  </div>
+                </div>
+                <div className="chart-bar">
+                  <span>Build minutes</span>
+                  <div className="bar-track">
+                    <div className="bar bar--flowops" style={{ width: `${row.flowOps.time}%` }}>
+                      {row.flowOps.time}m
+                    </div>
+                    <div className="bar bar--competitor" style={{ width: `${row.competitor.time}%` }}>
+                      {row.competitor.time}m
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
       <div className="market-table" role="table" aria-label="Market comparison">

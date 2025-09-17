@@ -1152,6 +1152,192 @@
   animation: float-tag 5s ease-in-out infinite;
 }
 
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  max-width: 1180px;
+  margin: 0 auto 36px;
+  padding: 0 clamp(16px, 4vw, 32px);
+}
+
+.pricing-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background: var(--surface-secondary);
+  border: 1px solid var(--surface-outline-strong);
+  border-radius: 24px;
+  padding: 26px;
+  box-shadow: var(--surface-shadow-light);
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.pricing-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--surface-shadow);
+}
+
+.pricing-card--highlight {
+  background: linear-gradient(135deg, rgba(79, 157, 255, 0.16) 0%, rgba(129, 140, 248, 0.22) 100%);
+  border-color: rgba(129, 140, 248, 0.45);
+  box-shadow: 0 20px 40px rgba(79, 157, 255, 0.22);
+}
+
+.pricing-card__header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pricing-card__header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.pricing-amount {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.pricing-cadence {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.pricing-card ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+}
+
+.pricing-card li {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.pricing-card li::before {
+  content: '•';
+  color: var(--brand-electric);
+  display: inline-block;
+}
+
+.pricing-cta {
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+.pricing-card--highlight .pricing-cta {
+  background: linear-gradient(120deg, rgba(79, 157, 255, 0.95), rgba(129, 140, 248, 0.95));
+  box-shadow: 0 14px 32px rgba(79, 157, 255, 0.3);
+}
+
+.chart-panel {
+  max-width: 1180px;
+  margin: 0 auto 40px;
+  padding: 28px clamp(16px, 4vw, 32px) 32px;
+  border-radius: 28px;
+  border: 1px solid var(--surface-outline-strong);
+  background: var(--surface-elevated);
+  box-shadow: var(--surface-shadow-light);
+}
+
+.chart-panel header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 24px;
+}
+
+.chart-panel h3 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.chart-panel p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.chart-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.chart-row {
+  display: grid;
+  grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
+  gap: 18px;
+  align-items: center;
+  padding: 16px 18px;
+  border-radius: 20px;
+  background: color-mix(in srgb, var(--surface-primary) 80%, transparent);
+  border: 1px solid color-mix(in srgb, var(--surface-outline-strong) 90%, transparent);
+}
+
+.chart-label {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.chart-bars {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.chart-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.bar-track {
+  position: relative;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  background: var(--surface-primary);
+  border-radius: 999px;
+  padding: 4px;
+  border: 1px solid var(--surface-outline);
+  overflow: hidden;
+}
+
+.bar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 32px;
+  border-radius: 999px;
+  font-weight: 600;
+  color: #020617;
+  white-space: nowrap;
+}
+
+.bar--flowops {
+  background: linear-gradient(120deg, rgba(79, 157, 255, 0.92), rgba(129, 140, 248, 0.92));
+  box-shadow: 0 10px 26px rgba(79, 157, 255, 0.3);
+}
+
+.bar--competitor {
+  background: color-mix(in srgb, rgba(129, 140, 248, 0.15) 60%, var(--surface-secondary));
+  color: var(--text-primary);
+  border: 1px solid rgba(129, 140, 248, 0.25);
+}
+
 .cost {
   margin-top: clamp(90px, 13vw, 150px);
 }
@@ -1842,8 +2028,17 @@
   .engine-grid,
   .toolchain-grid,
   .safeguard-grid,
-  .cost-grid {
+  .cost-grid,
+  .pricing-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .chart-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .chart-bars {
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .market-head,
@@ -1953,8 +2148,21 @@
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .cost-grid {
+  .cost-grid,
+  .pricing-grid {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .chart-panel {
+    padding: 24px clamp(16px, 5vw, 28px);
+  }
+
+  .chart-row {
+    gap: 14px;
+  }
+
+  .chart-bars {
+    gap: 10px;
   }
 
   .market-head,
