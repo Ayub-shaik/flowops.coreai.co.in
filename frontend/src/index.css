@@ -15,6 +15,16 @@
   --brand-violet: #818cf8;
   --brand-amber: #f8b458;
   --accent-border: rgba(79, 157, 255, 0.35);
+  --surface-primary: rgba(15, 23, 42, 0.55);
+  --surface-secondary: rgba(5, 10, 22, 0.85);
+  --surface-elevated: rgba(5, 12, 24, 0.82);
+  --surface-card: rgba(6, 13, 25, 0.75);
+  --surface-outline: rgba(148, 163, 184, 0.18);
+  --surface-outline-strong: rgba(79, 157, 255, 0.2);
+  --surface-shadow: 0 22px 50px rgba(8, 13, 27, 0.45);
+  --surface-shadow-light: 0 18px 36px rgba(15, 23, 42, 0.35);
+  --cursor-gradient: radial-gradient(620px circle at 20% 20%, rgba(94, 149, 255, 0.18), transparent 65%),
+    radial-gradient(540px circle at 80% 10%, rgba(129, 140, 248, 0.16), transparent 70%);
   --cursor-x: 50%;
   --cursor-y: 50%;
 }
@@ -29,9 +39,7 @@ html, body {
 
 body {
   margin: 0;
-  background: radial-gradient(circle at var(--cursor-x) var(--cursor-y), rgba(91, 155, 255, 0.28), transparent 55%),
-    radial-gradient(circle at calc(var(--cursor-x) + 12%) calc(var(--cursor-y) + 18%), rgba(129, 140, 248, 0.22), transparent 65%),
-    linear-gradient(130deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-tertiary) 100%);
+  background: var(--cursor-gradient), linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 52%, var(--bg-tertiary) 100%);
   color: var(--text-primary);
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   line-height: 1.6;
@@ -42,6 +50,35 @@ body {
 
 #root {
   min-height: 100%;
+}
+
+body[data-theme='light'] {
+  color-scheme: light;
+  --bg-primary: #f3f4f9;
+  --bg-secondary: #e4e9f8;
+  --bg-tertiary: #dbe2fb;
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(15, 23, 42, 0.1);
+  --text-primary: #111827;
+  --text-secondary: rgba(55, 65, 81, 0.82);
+  --text-muted: rgba(100, 116, 139, 0.72);
+  --brand-electric: #2563eb;
+  --brand-emerald: #059669;
+  --brand-violet: #6366f1;
+  --brand-amber: #f59e0b;
+  --accent-border: rgba(37, 99, 235, 0.32);
+  --surface-primary: rgba(255, 255, 255, 0.85);
+  --surface-secondary: rgba(255, 255, 255, 0.95);
+  --surface-elevated: rgba(246, 248, 255, 0.95);
+  --surface-card: rgba(248, 250, 255, 0.96);
+  --surface-outline: rgba(15, 23, 42, 0.14);
+  --surface-outline-strong: rgba(37, 99, 235, 0.22);
+  --surface-shadow: 0 18px 36px rgba(148, 163, 184, 0.28);
+  --surface-shadow-light: 0 12px 24px rgba(160, 173, 203, 0.28);
+  --cursor-gradient: radial-gradient(600px circle at 18% 18%, rgba(37, 99, 235, 0.18), transparent 60%),
+    radial-gradient(520px circle at 80% 15%, rgba(99, 102, 241, 0.12), transparent 70%);
+  background: var(--cursor-gradient), linear-gradient(150deg, var(--bg-primary) 0%, var(--bg-secondary) 52%, var(--bg-tertiary) 100%);
+  color: var(--text-primary);
 }
 
 ::selection {
@@ -70,5 +107,10 @@ a:hover {
   body {
     background: radial-gradient(circle at 50% 0%, rgba(79, 157, 255, 0.25), transparent 60%),
       linear-gradient(150deg, #070912 0%, #0f182b 55%, #161f34 100%);
+  }
+
+  body[data-theme='light'] {
+    background: radial-gradient(circle at 50% 10%, rgba(37, 99, 235, 0.22), transparent 65%),
+      linear-gradient(160deg, #f7f9ff 0%, #eaeffe 55%, #dee6fb 100%);
   }
 }
